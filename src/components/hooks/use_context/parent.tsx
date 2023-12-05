@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Child1 } from "./child_1";
 import { Child2 } from "./child_2";
 
@@ -20,8 +20,6 @@ export const Parent = () => {
   const [darkTheme, setDarkTheme] = useState(true);
 
   const toggleTheme = () => {
-    // const theme = useContext(darkTheme);
-
     setDarkTheme((prevDarkTheme) => !prevDarkTheme);
   };
 
