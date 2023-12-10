@@ -1,9 +1,7 @@
 import { useTodo } from "../use_x/use_todo";
 
 export const Todo = () => {
-  const [data, isFetching] = useTodo(
-    "https://jsonplaceholder.typicode.com/todos/1"
-  );
+  const [data, isFetching] = useTodo();
 
   return (
     <>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { isError } from "../../../helpers/is_error";
 
-/** This is the response that TypiCode gives for the /todos/ endpoint */
 export interface TodoResponse {
   userId: number;
   id: number;
@@ -9,8 +8,8 @@ export interface TodoResponse {
   completed: boolean;
 }
 
-export const useTodo = (url: string) => {
-  const [data, setData] = useState<TodoResponse>();
+export const useFetch = <T>(url: string) => {
+  const [data, setData] = useState<T>();
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -31,4 +30,8 @@ export const useTodo = (url: string) => {
     fetchData();
   }, [url]);
   return [data, isFetching];
+};
+
+export const useTodo = () => {
+  return useFetch<TodoResponse>("https://jsonplaceholder.typicode.com/todos/1");
 };
