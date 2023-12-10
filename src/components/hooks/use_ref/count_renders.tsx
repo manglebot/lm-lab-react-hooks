@@ -4,9 +4,9 @@ export const CountRenders = () => {
   const [value, setValue] = useState("");
   let count = useRef(0);
 
-  const incrementCount = () => {
-    count.current++;
-  };
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
 
   return (
     <>
@@ -15,10 +15,7 @@ export const CountRenders = () => {
       <input
         value={value}
         type="text"
-        onChange={(e) => {
-          setValue(e.target.value);
-          incrementCount();
-        }}
+        onChange={(e) => setValue(e.target.value)}
       />
 
       <p>{value}</p>
