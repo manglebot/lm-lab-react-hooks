@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 
+let renderedNum = 1;
+
 export const CountRenders = () => {
   const [value, setValue] = useState("");
-  let count = useRef(0);
+  const count = useRef(0);
 
   useEffect(() => {
-    count.current = count.current + 1;
+    count.current++;
+    renderedNum = count.current;
   });
 
   return (
@@ -19,7 +22,7 @@ export const CountRenders = () => {
       />
 
       <p>{value}</p>
-      <p>I have rendered {count.current} times</p>
+      <p>I have rendered {renderedNum} times</p>
     </>
   );
 };
