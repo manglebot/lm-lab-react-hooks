@@ -1,13 +1,21 @@
-import { useTodo } from "../use_x/use_todo";
+import { useFetch } from "./use_fetch";
+
+interface TodoResponse {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 export const Todo = () => {
-  const [data, isFetching] = useTodo();
+  const url = "https://jsonplaceholder.typicode.com/todos/1";
+  const { data, isFetching } = useFetch<TodoResponse>(url);
 
   return (
     <>
-      <h2>Custom Hook</h2>
-
-      {isFetching ? <p>Fetching...</p> : <p>{data?.title}</p>}
+      {" "}
+      <h2>Custom Hook</h2>{" "}
+      {isFetching ? <p>Fetching...</p> : <p>{data?.title}</p>}{" "}
     </>
   );
 };

@@ -7,11 +7,9 @@ export interface TodoResponse {
   title: string;
   completed: boolean;
 }
-
 export const useFetch = <T>(url: string) => {
   const [data, setData] = useState<T>();
   const [isFetching, setIsFetching] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,15 +21,10 @@ export const useFetch = <T>(url: string) => {
         }
       } catch (e: unknown) {
         setIsFetching(false);
-
         console.log(isError(e) ? e.message : "Unknown error!");
       }
     };
     fetchData();
   }, [url]);
-  return [data, isFetching];
-};
-
-export const useTodo = () => {
-  return useFetch<TodoResponse>("https://jsonplaceholder.typicode.com/todos/1");
+  return { data, setData, isFetching };
 };
